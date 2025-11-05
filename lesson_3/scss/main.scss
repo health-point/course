@@ -1,0 +1,328 @@
+$primary-color: #252525;
+$background-color: #020202;
+$text-color: #FFB800;
+$text-color2: white;
+$placeholder-gray: #D9D9D9;
+$input-gray: #333333;
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $background-color;
+    color: $text-color2;
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa';
+    
+}
+
+header {
+    font-size: 16px;
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    padding: 33px 0;
+    background-color: $background-color;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: end;
+    margin: 0;
+    nav {
+        padding-right: 50px;
+        ul {
+            list-style: none;
+            display: flex;
+            gap: 54px;
+            margin: 0;
+        }
+        a {
+            text-decoration: none;
+            color: $text-color2;
+            font-weight: 700;
+        }
+    }
+}
+
+section {
+    height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 0;
+    @media (max-width: 900px) {
+        height: auto;
+        min-height: 100vh;
+    }
+}
+
+.section-title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+    color: $text-color2;
+}
+
+section#home {
+    gap: 24px;
+
+    .img-round {
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        overflow: hidden;
+        object-fit: cover;
+    }
+
+    .main-name {
+        font-size: 36px;
+        color: $text-color;
+        font-weight: 700;
+    }
+
+    .main-info {
+        color: $text-color2;
+        font-size: 18px;
+    }
+}
+
+section#about {
+    .main-about-page {
+        display: grid;
+        grid-template-columns: 330px 1fr;
+        gap: 75px;
+        background-color: $primary-color;
+        padding: 257px;
+        max-width: 1400px;
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
+        .img-rectangle {
+            height: 420px;
+            width: 330px;
+            border-radius: 5%;
+        }
+        .profile-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            .about-element,
+            .skills {
+                font-size: 24px;
+                font-weight: 500;
+                margin-top: 20px;
+            }
+            .main-name {
+                color: $text-color;
+                font-size: 38px;
+                font-weight: 700;
+                margin-top: -10px;
+            }
+
+            .about-text {
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+            .skills ul {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                list-style: none;
+                padding: 0;
+                gap: 10px 0;
+
+                @media (max-width: 900px) {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+
+            .skills li {
+                position: relative;
+                padding-left: 20px;
+            }
+
+            .skills li::before {
+                content: '•';
+                color: $text-color;
+                font-size: 1.2em;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+    }
+}
+
+
+section#work {
+    .work-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        width: 100%;
+        max-width: 1100px;
+
+        @media (max-width: 900px) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    .work-item {
+        background-color: $placeholder-gray;
+        border-radius: 15px;
+        aspect-ratio: 1 / 1;
+    }
+
+
+}
+
+
+section#blog {
+    .blog-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        width: 100%;
+        max-width: 1100px;
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .blog-card {
+        background-color: $primary-color;
+        padding: 30px;
+        border-radius: 15px;
+    }
+
+    .blog-title {
+        color: $text-color;
+        font-size: 22px;
+        margin-top: 0;
+    }
+
+    .blog-text {
+        font-size: 16px;
+        line-height: 1.6;
+        color: $text-color2;
+        opacity: 0.8;
+    }
+
+    .blog-link {
+        color: $text-color;
+        text-decoration: none;
+        font-weight: 700;
+    }
+}
+
+
+section#contact {
+    .contact-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 50px;
+        background-color: $primary-color;
+        padding: 257px;
+        width: 100%;
+        max-width: 1440px;
+
+        @media (max-width: 900px) {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .contact-title {
+        color: $text-color;
+        font-size: 32px;
+        font-weight: 700;
+        margin-top: 0;
+    }
+
+    .contact-info p {
+        font-size: 16px;
+        line-height: 1.6;
+        opacity: 0.8;
+        max-width: 400px;
+    }
+
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .contact-form label {
+        font-size: 14px;
+        font-weight: 700;
+        opacity: 0.9;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        background-color: $input-gray;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+        color: $text-color2;
+        font-size: 16px;resize: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+        color: $text-color2;
+        opacity: 0.5;
+    }
+
+    .cta-button {
+        background-color: $text-color;
+        color: $background-color;
+        border: none;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        max-width: 200px;
+    }
+}
+
+
+footer {
+    background-color: $text-color;
+    color: $background-color;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .footer-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 40px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .footer-nav a {
+        text-decoration: none;
+        color: $background-color;
+        font-weight: 700;
+    }
+
+    .footer-name {
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    .footer-copyright {
+        font-size: 14px;
+        opacity: 0.7;
+    }
+}

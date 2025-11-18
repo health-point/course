@@ -1,0 +1,337 @@
+$primary-color: #252525;
+$background-color: #020202;
+$text-color: #FFB800;
+$text-color2: white;
+$placeholder-gray: #D9D9D9;
+$input-gray: #333333;
+
+@mixin flex-center($direction: row, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+  gap: $gap;
+}
+@mixin mobile {
+  @media (max-width: 900px) {
+    @content;
+  }
+}
+@mixin card($bg, $padding: 20px, $radius: 15px) {
+  background-color: $bg;
+  padding: $padding;
+  border-radius: $radius;
+}
+@mixin form-field {
+  background-color: $input-gray;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  color: $text-color2;
+  font-size: 16px;
+}
+@mixin section-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  color: $text-color2;
+}
+
+body {
+  font-family: 'Comfortaa', 'Roboto', sans-serif;
+  background-color: $background-color;
+  color: $text-color2;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  font-size: 16px;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  padding: 33px 0;
+  background-color: $background-color;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  @include flex-center(row, 0);
+  justify-content: end;
+
+  nav {
+    padding-right: 50px;
+
+    ul {
+      list-style: none;
+      @include flex-center(row, 54px);
+      margin: 0;
+    }
+
+    a {
+      text-decoration: none;
+      color: $text-color2;
+      font-weight: 700;
+    }
+  }
+}
+
+section {
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  @include flex-center(column);
+  padding: 50px 0;
+
+  @include mobile {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.section-title {
+  @include section-title;
+}
+
+section#home {
+  gap: 24px;
+
+  .img-round {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    object-fit: cover;
+  }
+
+  .main-name {
+    font-size: 36px;
+    color: $text-color;
+    font-weight: 700;
+  }
+
+  .main-info {
+    font-size: 18px;
+  }
+}
+
+section#about {
+  .main-about-page {
+    display: grid;
+    grid-template-columns: 330px 1fr;
+    gap: 75px;
+    background-color: $primary-color;
+    padding: 257px;
+    max-width: 1400px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+
+    .img-rectangle {
+      height: 420px;
+      width: 330px;
+      border-radius: 5%;
+    }
+
+    .profile-content {
+      @include flex-center(column, 15px);
+      align-items: flex-start;
+
+      .about-element,
+      .skills {
+        font-size: 24px;
+        font-weight: 500;
+        margin-top: 20px;
+      }
+
+      .main-name {
+        color: $text-color;
+        font-size: 38px;
+        font-weight: 700;
+        margin-top: -10px;
+      }
+
+      .about-text {
+        font-size: 16px;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .skills ul {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        list-style: none;
+        padding: 0;
+        gap: 10px 0;
+
+        @include mobile {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .skills li {
+        position: relative;
+        padding-left: 20px;
+
+        &::before {
+          content: '•';
+          color: $text-color;
+          font-size: 1.2em;
+          position: absolute;
+          left: 0;
+          top: 0;
+        }
+      }
+    }
+  }
+}
+
+section#work {
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .work-item {
+    @include card($placeholder-gray, 0, 15px);
+    aspect-ratio: 1 / 1;
+  }
+}
+
+section#blog {
+  .blog-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .blog-card {
+    @include card($primary-color, 30px);
+  }
+
+  .blog-title {
+    color: $text-color;
+    font-size: 22px;
+    margin-top: 0;
+  }
+
+  .blog-text {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+
+  .blog-link {
+    color: $text-color;
+    text-decoration: none;
+    font-weight: 700;
+  }
+}
+
+section#contact {
+  .contact-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    background-color: $primary-color;
+    padding: 257px;
+    width: 100%;
+    max-width: 1440px;
+
+    @include mobile {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .contact-title {
+    color: $text-color;
+    font-size: 32px;
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  .contact-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.8;
+    max-width: 400px;
+  }
+
+  .contact-form {
+    @include flex-center(column, 15px);
+    align-items: flex-start;
+
+    label {
+      font-size: 14px;
+      font-weight: 700;
+      opacity: 0.9;
+    }
+
+    input,
+    textarea {
+      @include form-field;
+      resize: none;
+
+      &::placeholder {
+        color: $text-color2;
+        opacity: 0.5;
+      }
+    }
+  }
+
+  .cta-button {
+    background-color: $text-color;
+    color: $background-color;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    max-width: 200px;
+  }
+}
+
+footer {
+  background-color: $text-color;
+  color: $background-color;
+  padding: 50px;
+  @include flex-center(column, 20px);
+
+  .footer-nav ul {
+    list-style: none;
+    @include flex-center(row, 40px);
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-nav a {
+    text-decoration: none;
+    color: $background-color;
+    font-weight: 700;
+  }
+
+  .footer-name {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  .footer-copyright {
+    font-size: 14px;
+    opacity: 0.7;
+  }
+}

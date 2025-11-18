@@ -1,0 +1,313 @@
+@charset "UTF-8";
+body {
+  font-family: "Comfortaa", "Roboto", sans-serif;
+  background-color: #020202;
+  color: white;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  font-size: 16px;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  padding: 33px 0;
+  background-color: #020202;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  justify-content: end;
+}
+header nav {
+  padding-right: 50px;
+}
+header nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 54px;
+  margin: 0;
+}
+header nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+section {
+  height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  padding: 50px 0;
+}
+@media (max-width: 900px) {
+  section {
+    height: auto;
+    min-height: 100vh;
+  }
+}
+
+.section-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 50px;
+  color: white;
+}
+
+section#home {
+  gap: 24px;
+}
+section#home .img-round {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  overflow: hidden;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+section#home .main-name {
+  font-size: 36px;
+  color: #FFB800;
+  font-weight: 700;
+}
+section#home .main-info {
+  font-size: 18px;
+}
+
+section#about .main-about-page {
+  display: grid;
+  grid-template-columns: 330px 1fr;
+  gap: 75px;
+  background-color: #252525;
+  padding: 257px;
+  max-width: 1400px;
+}
+@media (max-width: 900px) {
+  section#about .main-about-page {
+    grid-template-columns: 1fr;
+  }
+}
+section#about .main-about-page .img-rectangle {
+  height: 420px;
+  width: 330px;
+  border-radius: 5%;
+}
+section#about .main-about-page .profile-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  align-items: flex-start;
+}
+section#about .main-about-page .profile-content .about-element,
+section#about .main-about-page .profile-content .skills {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+section#about .main-about-page .profile-content .main-name {
+  color: #FFB800;
+  font-size: 38px;
+  font-weight: 700;
+  margin-top: -10px;
+}
+section#about .main-about-page .profile-content .about-text {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+section#about .main-about-page .profile-content .skills ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  padding: 0;
+  gap: 10px 0;
+}
+@media (max-width: 900px) {
+  section#about .main-about-page .profile-content .skills ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+section#about .main-about-page .profile-content .skills li {
+  position: relative;
+  padding-left: 20px;
+}
+section#about .main-about-page .profile-content .skills li::before {
+  content: "•";
+  color: #FFB800;
+  font-size: 1.2em;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+section#work .work-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 1100px;
+}
+@media (max-width: 900px) {
+  section#work .work-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+section#work .work-item {
+  background-color: #D9D9D9;
+  padding: 0;
+  border-radius: 15px;
+  aspect-ratio: 1/1;
+}
+
+section#blog .blog-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+  max-width: 1100px;
+}
+@media (max-width: 900px) {
+  section#blog .blog-container {
+    grid-template-columns: 1fr;
+  }
+}
+section#blog .blog-card {
+  background-color: #252525;
+  padding: 30px;
+  border-radius: 15px;
+}
+section#blog .blog-title {
+  color: #FFB800;
+  font-size: 22px;
+  margin-top: 0;
+}
+section#blog .blog-text {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+section#blog .blog-link {
+  color: #FFB800;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+section#contact .contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  background-color: #252525;
+  padding: 257px;
+  width: 100%;
+  max-width: 1440px;
+}
+@media (max-width: 900px) {
+  section#contact .contact-container {
+    grid-template-columns: 1fr;
+  }
+}
+section#contact .contact-title {
+  color: #FFB800;
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 0;
+}
+section#contact .contact-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.8;
+  max-width: 400px;
+}
+section#contact .contact-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  align-items: flex-start;
+}
+section#contact .contact-form label {
+  font-size: 14px;
+  font-weight: 700;
+  opacity: 0.9;
+}
+section#contact .contact-form input,
+section#contact .contact-form textarea {
+  background-color: #333333;
+  border: none;
+  border-radius: 10px;
+  padding: 15px;
+  color: white;
+  font-size: 16px;
+  resize: none;
+}
+section#contact .contact-form input::-moz-placeholder, section#contact .contact-form textarea::-moz-placeholder {
+  color: white;
+  opacity: 0.5;
+}
+section#contact .contact-form input::placeholder,
+section#contact .contact-form textarea::placeholder {
+  color: white;
+  opacity: 0.5;
+}
+section#contact .cta-button {
+  background-color: #FFB800;
+  color: #020202;
+  border: none;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  max-width: 200px;
+}
+
+footer {
+  background-color: #FFB800;
+  color: #020202;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+footer .footer-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  padding: 0;
+  margin: 0;
+}
+footer .footer-nav a {
+  text-decoration: none;
+  color: #020202;
+  font-weight: 700;
+}
+footer .footer-name {
+  font-size: 32px;
+  font-weight: 700;
+}
+footer .footer-copyright {
+  font-size: 14px;
+  opacity: 0.7;
+}/*# sourceMappingURL=style.css.map */

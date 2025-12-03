@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>портфолио</title>
+    <script src="src/js/script.js" defer></script>
     <link rel="stylesheet" href="src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,121 +13,143 @@
 </head>
 
 <body>
-
+    <audio id="click-sound" preload="auto">
+        <source src="src/js/clickSound.wav" type="audio/wav">
+    </audio>
     <header>
+
+        <div class="countdown-display" id="countdown">
+        </div>
         <nav class="header-nav">
-            <ul>
-                <li><a href="#home">Начало</a></li>
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#work">Работы</a></li>
-                <li><a href="#blog">Блог</a></li>
-                <li><a href="#contact">Связаться</a></li>
-            </ul>
+            <button class="burger" aria-label="открыть меню">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="menu">
+                <ul>
+                    <li><a href="#home">Начало</a></li>
+                    <li><a href="#about">Обо мне</a></li>
+                    <li><a href="#work">Работы</a></li>
+                    <li><a href="#blog">Блог</a></li>
+                    <li><a href="#contact">Связаться</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
-<main>
-    <section id="home">
-        <img src="src/5a2a113bcae3e736716216af2094694c.jpg" alt="my photo" class="img-round">
-        <div class="main-name">
-            Максим
-        </div>
-        <div class="main-info">
-            работаем..
-        </div>
-    </section>
+    <main>
+        <section id="home">
+            <img src="src/5a2a113bcae3e736716216af2094694c.jpg" alt="my photo" class="img-round">
+            <div class="main-name">
+                Максим
+            </div>
+            <div class="main-info">
+                работаем..
+            </div>
+        </section>
 
-    <section id="about">
-        <div class="main-about-page">
-            <img src="src/5a2a113bcae3e736716216af2094694c.jpg" alt="photo" class="img-rectangle">
-            <div class="profile-content">
-                <div class="about-element">
-                    ABOUT —
+        <section id="about">
+            <div class="main-about-page">
+                <img src="src/5a2a113bcae3e736716216af2094694c.jpg" alt="photo" class="img-rectangle">
+                <div class="profile-content">
+                    <div class="about-element">
+                        ABOUT —
+                    </div>
+                    <div class="main-name">
+                        Максим
+                    </div>
+                    <div class="about-text">
+                        старательно, рьяно, ретиво, рачительно, заботливо, аккуратно, прилежно, добросовестно, исправно,
+                        тщательно, корпея, кропотливо, с рвением, с огоньком, с душой, от всего сердца, с любовью, с
+                        энтузиазмом, с жаром, с пылом, с энергией, с самоотдачей, самоотверженно, с чувством, с толком,
+                        на
+                        совесть, не покладая рук, засучив рукава, в поте лица работаем..
+                    </div>
+                    <div class="skills">
+                        SKILLS —
+                        <ul>
+                            <li>paint</li>
+                            <li>css</li>
+                            <li>figma</li>
+                            <li>html</li>
+                            <li>sigma</li>
+                            <li>javascript</li>
+                            <li>angular</li>
+                            <li>c#</li>
+                            <li>pascal abc</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="main-name">
-                    Максим
+            </div>
+        </section>
+
+        <section id="work">
+            <h2 class="section-title">Работы</h2>
+            <div class="work-grid">
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+                <div class="work-item"></div>
+
+            </div>
+        </section>
+
+        <section id="blog">
+            <h2 class="section-title">Блог..</h2>
+            <div class="blog-container">
+                <div class="blog-card">
+                    <h3 class="blog-title">статья 1</h3>
+                    <p class="blog-text">Тут прикольно</p>
+                    <a href="#blog" class="blog-link">Читать..</a>
                 </div>
-                <div class="about-text">
-                    старательно, рьяно, ретиво, рачительно, заботливо, аккуратно, прилежно, добросовестно, исправно,
-                    тщательно, корпея, кропотливо, с рвением, с огоньком, с душой, от всего сердца, с любовью, с
-                    энтузиазмом, с жаром, с пылом, с энергией, с самоотдачей, самоотверженно, с чувством, с толком, на
-                    совесть, не покладая рук, засучив рукава, в поте лица работаем..
+                <div class="blog-card">
+                    <h3 class="blog-title">статья 2</h3>
+                    <p class="blog-text">Тут не оч</p>
+                    <a href="#blog" class="blog-link">Читать..</a>
                 </div>
-                <div class="skills">
-                    SKILLS —
-                    <ul>
-                        <li>paint</li>
-                        <li>css</li>
-                        <li>figma</li>
-                        <li>html</li>
-                        <li>sigma</li>
-                        <li>javascript</li>
-                        <li>angular</li>
-                        <li>c#</li>
-                        <li>pascal abc</li>
-                    </ul>
+                <div class="blog-card">
+                    <h3 class="blog-title">статья 3</h3>
+                    <p class="blog-text">тут ваще ничотко</p>
+                    <a href="#blog" class="blog-link">Читать..</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="work">
-        <h2 class="section-title">Работы</h2>
-        <div class="work-grid">
-            <div class="work-item"></div>
-            <div class="work-item"></div>
-            <div class="work-item"></div>
-            <div class="work-item"></div>
-            <div class="work-item"></div>
-            <div class="work-item"></div>
-            <div class="work-item"></div>
-            <div class="work-item"></div>
+        <section id="contact">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="contact-title">Связаться</h3>
+                    <p>Напишите кто-то, я коплю сообщения</p>
+                </div>
+                <form class="contact-form">
+                    <div class="input-wrapper">
+                        <label for="name">Имя</label>
+                        <input type="text" id="name" placeholder="Ваше имя">
+                        <span class="error-message"></span>
+                    </div>
+                    <div class="input-wrapper">
 
-        </div>
-    </section>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Ваша почта">
+                        <span class="error-message"></span>
 
-    <section id="blog">
-        <h2 class="section-title">Блог..</h2>
-        <div class="blog-container">
-            <div class="blog-card">
-                <h3 class="blog-title">статья 1</h3>
-                <p class="blog-text">Тут прикольно</p>
-                <a href="#blog" class="blog-link">Читать..</a>
+                    </div>
+                    <div class="input-wrapper">
+
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" rows="5" placeholder="Напишите сообщение" maxlength="1000"></textarea>
+                        <span class="error-message"></span>
+
+                    </div>
+                    <button type="submit" class="cta-button">Отправить</button>
+                </form>
             </div>
-            <div class="blog-card">
-                <h3 class="blog-title">статья 2</h3>
-                <p class="blog-text">Тут не оч</p>
-                <a href="#blog" class="blog-link">Читать..</a>
-            </div>
-            <div class="blog-card">
-                <h3 class="blog-title">статья 3</h3>
-                <p class="blog-text">тут ваще ничотко</p>
-                <a href="#blog" class="blog-link">Читать..</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3 class="contact-title">Связаться</h3>
-                <p>Напишите кто-то, я коплю сообщения</p>
-            </div>
-            <form class="contact-form">
-                <label for="name">Имя</label>
-                <input type="text" id="name" placeholder="Ваше имя">
-
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Ваша почта">
-
-                <label for="message">Сообщение</label>
-                <textarea id="message" rows="5" placeholder="Напишите сообщение" maxlength="1000"></textarea>
-
-                <button type="submit" class="cta-button">Отправить</button>
-            </form>
-        </div>
-    </section>
-</main>
-
+        </section>
+    </main>
     <footer>
         <nav class="footer-nav">
             <ul>

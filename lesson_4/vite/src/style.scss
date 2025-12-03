@@ -12,16 +12,19 @@ $input-gray: #333333;
   align-items: center;
   gap: $gap;
 }
+
 @mixin mobile {
   @media (max-width: 900px) {
     @content;
   }
 }
+
 @mixin card($bg, $padding: 20px, $radius: 15px) {
   background-color: $bg;
   padding: $padding;
   border-radius: $radius;
 }
+
 @mixin form-field {
   background-color: $input-gray;
   border: none;
@@ -30,6 +33,7 @@ $input-gray: #333333;
   color: $text-color2;
   font-size: 16px;
 }
+
 @mixin section-title {
   text-align: center;
   font-size: 18px;
@@ -41,6 +45,7 @@ $input-gray: #333333;
 }
 
 body {
+  scroll-behavior: smooth;
   font-family: 'Comfortaa', 'Roboto', sans-serif;
   background-color: $background-color;
   color: $text-color2;
@@ -59,8 +64,51 @@ header {
   @include flex-center(row, 0);
   justify-content: end;
 
+  .countdown-display{
+    font-size: small;
+    margin-left :10px ;
+  }
   nav {
     padding-right: 50px;
+    padding-left: 50px;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .menu {
+      visibility: visible;
+
+    }
+
+    .menu.active {
+      right: 0;
+      opacity: 1;
+    }
+
+    .burger {
+      margin-left: auto;
+      display: none;
+      gap: 10px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+
+    }
+
+
+    .burger.active {
+      span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+      }
+
+      span:nth-child(2) {
+        opacity: 0;
+      }
+
+      span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -8px);
+      }
+    }
 
     ul {
       list-style: none;
@@ -73,6 +121,47 @@ header {
       color: $text-color2;
       font-weight: 700;
     }
+
+    a.ative {
+      color: $text-color;
+      font-weight: 700;
+      border-bottom: 2px solid $text-color;
+    }
+
+    @include mobile {
+      .menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background-color: $background-color;
+        padding: 120px 40px 40px;
+        opacity: 0; // можно оставить, а можно убрать
+        transition: right 0.4s ease;
+        z-index: 999;
+      }
+
+      .burger {
+        display: flex;
+        flex-direction: column;
+
+        span {
+          height: 3px;
+          width: 30px;
+          border-radius: 2px;
+          background-color: $text-color;
+          transition: all 0.3s ease;
+        }
+      }
+
+      ul {
+        flex-direction: column;
+        gap: 40px;
+        align-items: flex-start;
+      }
+    }
+
   }
 }
 
@@ -121,7 +210,7 @@ section#about {
     grid-template-columns: 330px 1fr;
     gap: 75px;
     background-color: $primary-color;
-    padding: 257px;
+    padding: 250px;
     max-width: 1400px;
 
     @include mobile {
@@ -129,9 +218,9 @@ section#about {
     }
 
     .img-rectangle {
-      height: 420px;
-      width: 330px;
-      border-radius: 5%;
+      width: 100%;
+      height: auto;
+      max-width: 330px;
     }
 
     .profile-content {
@@ -246,11 +335,11 @@ section#contact {
   .contact-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    gap: 75px;
     background-color: $primary-color;
     padding: 257px;
     width: 100%;
-    max-width: 1440px;
+    max-width: 1390px;
 
     @include mobile {
       grid-template-columns: 1fr;
@@ -275,7 +364,45 @@ section#contact {
     @include flex-center(column, 15px);
     align-items: flex-start;
 
+
+    .input-wrapper {
+      position: relative;
+      margin-bottom: 19px;
+      width: 100%;
+    }
+
+    .input-wrapper.invalid {
+      input,
+      textarea {
+        border: 2px solid #ff4444;
+      }
+    }
+
+    .input-wrapper.valid {
+      input,
+      textarea {
+        border: 2px solid #44ff44;
+      }
+    }
+
+    .error-message {
+      position: absolute;
+      left: 0;
+      bottom: -20px;
+      font-size: 12px;
+      color: #ff4444;
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+
+    .error-message.show {
+      visibility: visible;
+      opacity: 1;
+    }
+
     label {
+      display: flex;
       font-size: 14px;
       font-weight: 700;
       opacity: 0.9;

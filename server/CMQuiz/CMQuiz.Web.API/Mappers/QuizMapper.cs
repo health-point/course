@@ -37,14 +37,20 @@ public static class QuizMapper
         {
             QuizItemRequestSelectModel m => new QuizItemRequestSelect
             {
+                Title = m.Title,
+                Description = m.Description,
                 Options = m.Options.ToList().AsReadOnly()
             },
             QuizItemRequestTextModel m => new QuizItemRequestText
             {
+                Title = m.Title,
+                Description = m.Description,
                 Placeholder = m.Placeholder
             },
             QuizItemRequestRangeModel m => new QuizItemRequestRange
             {
+                Title = m.Title,
+                Description = m.Description,
                 Min = m.Min,
                 Max = m.Max
             },

@@ -25,6 +25,8 @@ public class CreateQuizUseCase(IQuizRepository quizRepository) : ICreateQuizUseC
                 QuizItemRequestSelect select => new QuizItemSelect
                 {
                     Id = itemId++,
+                    Title = select.Title,
+                    Description = select.Description,
                     QuizId = 0,
                     Type = QuizItemType.Select,
                     Options = select.Options.ToList()
@@ -32,6 +34,8 @@ public class CreateQuizUseCase(IQuizRepository quizRepository) : ICreateQuizUseC
                 QuizItemRequestText text => new QuizItemText
                 {
                     Id = itemId++,
+                    Title = text.Title,
+                    Description = text.Description,
                     QuizId = 0,
                     Type = QuizItemType.Text,
                     Placeholder = text.Placeholder
@@ -39,6 +43,8 @@ public class CreateQuizUseCase(IQuizRepository quizRepository) : ICreateQuizUseC
                 QuizItemRequestRange range => new QuizItemRange
                 {
                     Id = itemId++,
+                    Title = range.Title,
+                    Description = range.Description,
                     QuizId = 0,
                     Type = QuizItemType.Range,
                     Min = range.Min,

@@ -13,6 +13,8 @@ namespace CMQuiz.Web.API.Models;
 [JsonPolymorphic(TypeDiscriminatorPropertyName = "type")]
 public abstract record QuizItemRequestModel
 {
+    public required string Title { get; init; }
+    public required string Description { get; init; }
     /// <summary>
     /// The type discriminator for polymorphic deserialization. Must be one of: "select", "text", or "range".
     /// This field is required and determines which concrete type will be deserialized.

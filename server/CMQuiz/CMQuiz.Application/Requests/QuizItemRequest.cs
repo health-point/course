@@ -6,6 +6,8 @@ namespace CMQuiz.Application.Requests;
 /// </summary>
 public abstract record QuizItemRequest
 {
+    public required string Title { get; init; }
+    public required string Description { get; init; }
     /// <summary>
     /// The type of quiz item. Determines which concrete implementation should be used.
     /// </summary>

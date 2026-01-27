@@ -45,10 +45,14 @@ Frontend development course covering HTML, CSS, JavaScript, TypeScript, and Angu
 
 ### [Module 9: Angular - The beginning of the development of an application with quizzes](./lesson_9)
 
+### [Module 10: Angular - ReactiveFormsModule](./lesson_10)
+
 - [ ] Task: Create Angular app
 - [ ] Task: Create models, services, mock services (while there is no backend)
 - [ ] Task: Create list page with pagination
 - [ ] Task: Create create, edit, delete forms for quiz entity
+
+### [Module 11: Auth](./lesson_11)
 
 ## License
 

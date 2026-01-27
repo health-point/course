@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\CMQuiz.Domain\CMQuiz.Domain.csproj" />
+        <ProjectReference Include="..\CMQuiz.Infrastructure\CMQuiz.Infrastructure.csproj" />
+    </ItemGroup>
+
+</Project>

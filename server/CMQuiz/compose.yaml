@@ -1,0 +1,8 @@
+﻿services:
+  cmquiz:
+    image: cmquiz
+    build:
+      context: .
+      dockerfile: CMQuiz.Web.API/Dockerfile
+    ports:
+      - 5000:8080

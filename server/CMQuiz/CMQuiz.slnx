@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="compose.yaml" />
+  </Folder>
+  <Project Path="CMQuiz.Application/CMQuiz.Application.csproj" />
+  <Project Path="CMQuiz.Domain/CMQuiz.Domain.csproj" />
+  <Project Path="CMQuiz.Infrastructure/CMQuiz.Infrastructure.csproj" />
+  <Project Path="CMQuiz.Web.API\CMQuiz.Web.API.csproj" />
+</Solution>

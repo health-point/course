@@ -1,61 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { JsonPipe, NgIf } from '@angular/common';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { QuizService } from '../../services/quiz-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-quiz-form',
-  imports: [ReactiveFormsModule, JsonPipe, NgIf],
+  standalone: true,
+  imports: [ReactiveFormsModule],
   template: `
-<form [formGroup]="quizForm">
-  <h2>Создать новый квиз</h2>
-
-  <div>
-    <label>Название:</label>
-    <div *ngIf="quizForm.get('name')?.invalid && quizForm.get('name')?.touched" style="color: red">
-  Название обязательно!
-</div>
-    <input type="text" formControlName="name">
-  </div>
-
-  <div>
-    <label>Описание:</label>
-    <textarea formControlName="description"></textarea>
-  </div>
-
-  <button (click)="onSubmit()" type="submit">Сохранить</button>
-</form>
-`,
-  styleUrl: './quiz-form.scss',
+    <h2>Создать квиз</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <input formControlName="name" placeholder="Название" required>
+      <input formControlName="description" placeholder="Описание">
+      <button type="submit" [disabled]="form.invalid">Сохранить</button>
+    </form>
+  `
 })
-export class QuizForm implements OnInit {
+export class QuizFormComponent {
+  form = new FormGroup({
+    name: new FormControl('', Validators.required),
+    description: new FormControl('')
+  });
 
-
-  constructor(private quizService: QuizService) { }
-
-
-  quizForm!: FormGroup;
-
-  ngOnInit(): void {
-    this.quizForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('')
-    })
-    console.log(this.quizForm.value);
-  }
-
+  constructor(private quizService: QuizService, private router: Router) { }
 
   onSubmit() {
-    if (this.quizForm.invalid) {
-      console.log("form invalid")
-      this.quizForm.markAllAsTouched();
-    }
-    const newQuizData = this.quizForm.value;
+    if (this.form.invalid) return;
 
-    this.quizService.addQuiz (newQuizData).subscribe(quiz=>{
-      console.log("mew quiz ", quiz);
-      this.quizForm.reset();
-    })
+    const data = {
+      name: this.form.value.name!,
+      description: this.form.value.description || '',
+      items: []
+    };
+
+    this.quizService.addQuiz(data).subscribe({
+      next: () => this.router.navigate(['/list']),
+      error: err => console.error(err)
+    });
   }
-
 }

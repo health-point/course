@@ -1,8 +1,9 @@
-export interface Quiz{
-    id?: number;
-    name: string;
-    description?: string;
-    questions: Question[];
+export interface Quiz {
+questions: any;
+  id: number;
+  name: string;
+  description: string;
+  items: any[]; 
 }
 export interface Question {
     text : string; 

@@ -1,37 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { QuizService } from '../../services/quiz-service';
 import { Quiz } from '../../models/quiz.model';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-quiz-list',
   imports: [],
   template: `
-  <h1>Список квизов</h1>
-  <p>Всего: {{ quizzes.length }}</p>
+    <h1>Список квизов</h1>
+    <p>Всего: {{ quizzes.length }}</p>
 
-  @for (quiz of getVisibleQuizzes(); track quiz.id) {
-    <div class="quiz-card">
-      <h2>{{ quiz.name }}</h2>
-      <p>{{ quiz.description || 'Нет описания' }}</p>
-      <p>Вопросов: {{ quiz.questions?.length || 0 }}</p>
-      <button (click)="onDelete(quiz?.id || 0)">Удалить</button>
-    </div>
-  }
-<div class="pagination">
-  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">
-    Предыдущая</button>
-
-  @for (page of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; track page) {
-    @if (page <= maxPages) {
-      <button (click)="goToPage(page)" [class.active]="currentPage === page">
-        {{ page }}
-      </button>
+    @for (quiz of getVisibleQuizzes(); track quiz.id) {
+      <div class="quiz-card">
+        <h2>{{ quiz.name }}</h2>
+        <p>{{ quiz.description || 'Нет описания' }}</p>
+        <p>Вопросов: {{ quiz.questions.length || 0 }}</p>
+        <button (click)="onDelete(quiz?.id || 0)">Удалить</button>
+      </div>
     }
-  }
-  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === maxPages">
-    Следующая</button>
-</div>
-`,
+<button (click)="openCreateForm()">Добавить квиз</button>
+    <div class="pagination">
+      <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Предыдущая</button>
+
+      @for (page of pagesArray(); track page) {
+        <button (click)="goToPage(page)" [class.active]="currentPage === page">
+          {{ page }}
+        </button>
+      }
+
+      <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === maxPages">Следующая</button>
+    </div>
+  `,
   styleUrl: './quiz-list.scss',
 })
 export class QuizList implements OnInit {
@@ -39,28 +37,31 @@ export class QuizList implements OnInit {
   currentPage = 1;
   itemsPerPage = 5;
   maxPages = 1;
-  constructor(private quizService: QuizService) { }
 
+  constructor(private quizService: QuizService, private router: Router) { }
 
   ngOnInit(): void {
+    this.loadQuizzes();
+  }
+  openCreateForm() {
+    this.router.navigate(['/create']);
+  }
+  loadQuizzes() {
     this.quizService.getQuizzes().subscribe(quizzes => {
-      this.quizzes = quizzes;
-      this.maxPages = Math.ceil(this.quizzes.length / this.itemsPerPage);
-      this.currentPage = 1;
+      this.quizzes = quizzes ?? [];
+      this.maxPages = Math.ceil(this.quizzes.length / this.itemsPerPage) || 1;
+      this.currentPage = Math.min(this.currentPage, this.maxPages);
     });
   }
+
   onDelete(id: number): void {
-    if (id != 0) {
-      this.quizService.deleteQuiz(id);
+    if (id !== 0) {
+      this.quizService.deleteQuiz(id).subscribe(() => this.loadQuizzes());
     }
-    else console.log("quiz id undefined")
-  }
-
-  updateVisibleQuizzes(page: number) {
-
   }
 
   getVisibleQuizzes(): Quiz[] {
+    if (!this.quizzes?.length) return [];
     const reversed = [...this.quizzes].reverse();
     const start = (this.currentPage - 1) * this.itemsPerPage;
     const end = start + this.itemsPerPage;
@@ -68,10 +69,13 @@ export class QuizList implements OnInit {
   }
 
   goToPage(page: number): void {
-    const max = Math.ceil(this.quizzes.length / this.itemsPerPage);
+    const max = Math.ceil(this.quizzes.length / this.itemsPerPage) || 1;
     if (page >= 1 && page <= max) {
       this.currentPage = page;
     }
   }
 
+  pagesArray(): number[] {
+    return Array.from({ length: this.maxPages }, (_, i) => i + 1);
+  }
 }

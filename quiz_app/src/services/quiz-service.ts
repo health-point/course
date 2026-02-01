@@ -9,11 +9,7 @@ export class QuizService {
 
   constructor(private http: HttpClient) { }
 
-
   getQuizzes(pageNumber = 1, pageSize = 100): Observable<Quiz[]> {
-    // апишка возвращает { items, totalCount, pageNumber, pageSize }, у тебя возвртащаслдя один массив и он получается был пустой 
-    // return this.http.get<Quiz[]>(`${this.api}/quizes`, { withCredentials: true });
-    // крч ниже подправил
     return this.http
       .get<PagedResult<Quiz>>(`${this.api}/quizes`, {
         params: { pageNumber, pageSize },
@@ -27,11 +23,9 @@ export class QuizService {
   }
 
   addQuiz(data: any): Observable<any> {
-    return this.http.post('http://localhost:5000/api/quizes', data, {
-      withCredentials: true,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return this.http.post('http://localhost:5000/api/quizes', data, { withCredentials: true });
   }
+
   updateQuiz(id: number, data: { name: string; description?: string; questions: Question[] }): Observable<Quiz> {
     return this.http.put<Quiz>(`${this.api}/quizes/${id}`, data, { withCredentials: true });
   }

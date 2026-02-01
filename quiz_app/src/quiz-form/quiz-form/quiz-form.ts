@@ -108,7 +108,7 @@ export class QuizFormComponent {
           title: item.title,
           description: item.description || ''
         };
-        if (item.options) return { ...base, options: item.options };
+        if (item.options) return { ... base, type: 'select'};
         if (item.min !== undefined) return { ...base, min: item.min, max: item.max };
         return { ...base, placeholder: item.placeholder || '' };
       })

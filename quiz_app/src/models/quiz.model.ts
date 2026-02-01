@@ -1,10 +1,19 @@
 export interface Quiz {
-questions: any;
   id: number;
   name: string;
   description: string;
-  items: any[]; 
+  questions?: any;
+  items: any[];
 }
+
+
+export interface PagedResult<T> {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+}
+
 export interface Question {
     text : string; 
     answer: string[]; 

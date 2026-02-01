@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
       <div class="quiz-card">
         <h2>{{ quiz.name }}</h2>
         <p>{{ quiz.description || 'Нет описания' }}</p>
-        <p>Вопросов: {{ quiz.questions.length || 0 }}</p>
+        <p>Вопросов: {{ (quiz.questions?.length ?? quiz.items?.length) || 0 }}</p>
         <button (click)="onDelete(quiz?.id || 0)">Удалить</button>
       </div>
     }

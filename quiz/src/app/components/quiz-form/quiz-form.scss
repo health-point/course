@@ -1,0 +1,147 @@
+.quiz-form-page {
+  background-color: #f8f9fa; 
+  min-height: calc(100vh - 64px);
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.quiz-form-card {
+  width: 100%;
+  max-width: 770px; 
+  background: white;
+  border-radius: 12px;
+  border: 1px solid #dadce0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  padding: 24px;
+}
+
+.form-header {
+  margin-bottom: 24px;
+  h2 {
+    font-size: 32px;
+    font-weight: 400;
+    color: #202124;
+    margin: 0 0 16px;
+  }
+}
+
+.error-message {
+  background: #fce8e6;
+  color: #d93025;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.questions-container {
+  margin-top: 32px;
+}
+
+.questions-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h3 {
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+.add-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.question-card {
+  background: #ffffff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 24px;
+  transition: box-shadow 0.2s;
+
+  &:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+}
+
+.question-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  .q-number {
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .q-type-badge {
+    background: #e8f0fe;
+    color: #1967d2;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}
+
+.spacer { flex: 1; }
+
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+
+  .drag-handle { color: #bdc1c6; cursor: grab; }
+  .option-input {
+  ::ng-deep .mdc-text-field--filled {
+    background-color: transparent !important; 
+  }
+}
+}
+
+.form-footer {
+  margin-top: 40px;
+  display: flex;
+  justify-content: flex-end;
+
+  .submit-btn {
+    height: 48px;
+    padding: 0 32px;
+    font-size: 16px;
+    border-radius: 24px;
+    background-color: #1a73e8;
+  }
+}
+
+.unauth-container {
+  text-align: center;
+  padding: 60px 20px;
+  .lock-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    color: #dadce0;
+    margin-bottom: 24px;
+  }
+}
